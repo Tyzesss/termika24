@@ -11,7 +11,7 @@ import heroImage from "@/assets/hero-kotlownia-bright.png";
 
 const STATS = [
   { value: 20, suffix: "", label: "Lat doświadczenia" },
-  { value: 30, suffix: "+", label: "Realizacje" },
+  { value: 30, suffix: "+", label: "Realizacji" },
   { value: 9, suffix: "", label: "Rodzajów instalacji" },
   { value: 2006, suffix: "", label: "Rok założenia", static: true },
 ];
@@ -35,7 +35,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: reduce ? 0 : 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="size-full origin-center scale-[1.04] object-cover object-[50%_40%] brightness-[0.64]"
+          className="size-full origin-center scale-[1.08] object-cover object-[68%_42%] brightness-[0.64]"
         />
       </div>
       <div
@@ -104,8 +104,8 @@ export function Hero() {
                 key={stat.label}
                 className={
                   i >= 2
-                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
-                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
                 }
               >
                 <div className="font-display text-4xl font-black leading-none text-accent lg:text-[2.75rem]">

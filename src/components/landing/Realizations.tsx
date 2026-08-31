@@ -5,18 +5,12 @@ import { DarkEyebrow } from "./DarkEyebrow";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 import { MobileCarousel } from "./MobileCarousel";
-import workHeatpump from "@/assets/work-heatpump.jpg";
-import workAc from "@/assets/work-ac.jpg";
-import workSolar from "@/assets/work-solar.jpg";
-import workRecup from "@/assets/work-recup.jpg";
-import workAcOutdoor from "@/assets/work-ac-outdoor.jpg";
-import workUnderfloor from "@/assets/work-underfloor.jpg";
-import workHeatpumpM from "@/assets/work-heatpump-m.jpg";
-import workAcM from "@/assets/work-ac-m.jpg";
-import workSolarM from "@/assets/work-solar-m.jpg";
-import workRecupM from "@/assets/work-recup-m.jpg";
-import workAcOutdoorM from "@/assets/work-ac-outdoor-m.jpg";
-import workUnderfloorM from "@/assets/work-underfloor-m.jpg";
+import workPkp from "@/assets/work-pkp-heatpump.jpg";
+import workSzpital from "@/assets/work-szpital-wezel.jpg";
+import workUe from "@/assets/work-ue-co.jpg";
+import workDps from "@/assets/work-dps-lazienka.jpg";
+import workZarzecze from "@/assets/work-zarzecze-kotlownia.jpg";
+import workZmu from "@/assets/work-zmu-instalacje.jpg";
 
 type Category =
   | "Kotłownie i c.o."
@@ -35,64 +29,64 @@ const PROJECTS: {
   featured?: boolean;
 }[] = [
   {
-    image: workHeatpump,
-    imageMobile: workHeatpumpM,
+    image: workPkp,
+    imageMobile: workPkp,
     category: "Pompy ciepła",
     title: "PKP Kraków, nastawnie Płaszów i Bieżanów",
     place: "Kraków, 2018",
     scope:
       "Instalacja c.o. i wod-kan wraz z technologią wytwarzania ciepła oraz montażem gazowych pomp ciepła.",
-    alt: "Jednostka zewnętrzna pompy ciepła przy budynku technicznym",
+    alt: "Jednostki zewnętrzne pomp ciepła przy budynku technicznym",
     featured: true,
   },
   {
-    image: workRecup,
-    imageMobile: workRecupM,
+    image: workSzpital,
+    imageMobile: workSzpital,
     category: "Instalacje sanitarne",
     title: "Szpital Miejski w Rudzie Śląskiej",
     place: "Ruda Śląska, 2015-2016",
     scope:
       "Instalacja c.o., c.w.u. i kanalizacji, węzeł cieplny 910 kW oraz kolektory słoneczne.",
-    alt: "Nowoczesna kotłownia i instalacja grzewcza w obiekcie użyteczności publicznej",
+    alt: "Węzeł cieplny z wymiennikami, pompami i izolowanymi rurociągami",
   },
   {
-    image: workUnderfloor,
-    imageMobile: workUnderfloorM,
+    image: workUe,
+    imageMobile: workUe,
     category: "Centralne ogrzewanie",
     title: "Uniwersytet Ekonomiczny we Wrocławiu",
     place: "Wrocław, 2018",
     scope: "Wymiana instalacji centralnego ogrzewania w budynkach należących do uczelni.",
-    alt: "Rozdzielacz instalacji centralnego ogrzewania w pomieszczeniu technicznym",
+    alt: "Rozdzielacz c.o. i grzejniki po wymianie instalacji",
   },
   {
-    image: workAc,
-    imageMobile: workAcM,
+    image: workDps,
+    imageMobile: workDps,
     category: "Instalacje sanitarne",
     title: "Dom Pomocy Społecznej w Gorlicach",
     place: "Gorlice, 2014",
     scope:
       "Instalacja c.o. i c.w.u. oraz adaptacja łazienek na pokoje kąpielowe dla niepełnosprawnych.",
-    alt: "Instalacja sanitarna w budynku opieki społecznej",
+    alt: "Łazienka przystosowana dla osób niepełnosprawnych po adaptacji",
   },
   {
-    image: workSolar,
-    imageMobile: workSolarM,
+    image: workZarzecze,
+    imageMobile: workZarzecze,
     category: "Kotłownie i c.o.",
     title: "Zespół Szkół Rolniczych w Zarzeczu",
     place: "Zarzecze, 2012",
     scope:
       "Modernizacja kotłowni gazowej 550 kW z wymianą kotła kondensacyjnego De Dietrich i automatyki.",
-    alt: "Kotłownia gazowa po modernizacji w obiekcie szkolnym",
+    alt: "Zmodernizowana kotłownia gazowa z kotłem kondensacyjnym",
   },
   {
-    image: workAcOutdoor,
-    imageMobile: workAcOutdoorM,
+    image: workZmu,
+    imageMobile: workZmu,
     category: "Instalacje sanitarne",
     title: "Budowa ZMU w Krakowie",
     place: "Kraków, 2016",
     scope:
       "Instalacja c.o., ciepłej i zimnej wody oraz kanalizacji w zespole mieszkalno-usługowym.",
-    alt: "Instalacje sanitarne w nowym budynku wielorodzinnym",
+    alt: "Piony c.o., wod-kan i kanalizacji w nowym budynku",
   },
 ];
 

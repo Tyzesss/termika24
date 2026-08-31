@@ -117,10 +117,10 @@
 
   --gradient-hero: linear-gradient(
     180deg,
-    oklch(0 0 0 / 0.56) 0%,
-    oklch(0 0 0 / 0.44) 40%,
-    oklch(0 0 0 / 0.64) 74%,
-    oklch(0 0 0 / 0.80) 100%
+    oklch(0 0 0 / 0.52) 0%,
+    oklch(0 0 0 / 0.38) 40%,
+    oklch(0 0 0 / 0.36) 72%,
+    oklch(0 0 0 / 0.40) 100%
   );
   --gradient-hero-side: linear-gradient(
     90deg,
