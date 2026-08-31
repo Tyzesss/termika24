@@ -64,10 +64,10 @@ export function Services() {
               Nasze usługi
             </span>
             <h2 className="mt-5 font-display text-3xl font-black sm:text-4xl md:whitespace-nowrap lg:text-5xl">
-              Wszystko czego potrzebuje
+              Dla domu, szkoły
               <span className="hidden md:inline"> </span>
               <br className="md:hidden" />
-              <span className="text-gradient-cyan">Twój dom</span>
+              <span className="text-gradient-cyan">i firmy</span>
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
               Instalacje wewnętrzne i przyłącza dla klientów indywidualnych, instytucjonalnych
