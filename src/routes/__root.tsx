@@ -80,15 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "viewport",
         content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
-      { name: "theme-color", content: "#1c1c1c" },
+      { name: "theme-color", content: "#0d0d0d" },
       {
         name: "theme-color",
-        content: "#1c1c1c",
+        content: "#0d0d0d",
         media: "(prefers-color-scheme: light)",
       },
       {
         name: "theme-color",
-        content: "#1c1c1c",
+        content: "#0d0d0d",
         media: "(prefers-color-scheme: dark)",
       },
       { name: "color-scheme", content: "dark" },

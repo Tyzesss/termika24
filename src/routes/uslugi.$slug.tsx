@@ -265,13 +265,13 @@ function ServicePage() {
               </section>
             ) : null}
 
-            <section className="mt-16 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:items-stretch lg:gap-12">
-              <div className="flex flex-col lg:col-span-7">
+            <section className="mt-16 flex flex-col gap-12 lg:mt-20">
+              <div className="flex flex-col">
                 <DarkEyebrow icon={CircleHelp}>FAQ</DarkEyebrow>
                 <h2 className="mt-5 font-display text-2xl font-black text-navy-foreground sm:text-3xl">
                   Często zadawane <span className="text-gradient-cyan">pytania</span>
                 </h2>
-                <Accordion type="single" collapsible className="mt-6 flex flex-1 flex-col gap-3">
+                <Accordion type="single" collapsible className="mt-6 flex flex-col gap-3">
                   {service.faq.map((item, i) => (
                     <AccordionItem
                       key={item.q}
@@ -288,31 +288,34 @@ function ServicePage() {
                   ))}
                 </Accordion>
               </div>
-              <div className="flex lg:col-span-5">
-                <div className="flex h-full w-full flex-col justify-between rounded-3xl bg-gradient-cyan p-8 text-white sm:p-10">
-                  <div>
-                    <h2 className="font-display text-2xl font-black">Potrzebujesz wyceny?</h2>
-                    <p className="mt-4 text-sm leading-relaxed text-white/85">
-                      Napisz albo zadzwoń. Pierwsza wizyta i wycena nic nie kosztują.
-                    </p>
-                  </div>
-                  <div className="mt-8 flex w-full flex-col gap-5">
-                    <Button asChild variant="hero" size="xl" className="w-full hover:scale-100">
-                      <Link to="/" hash="kontakt">
-                        Formularz kontaktowy <ArrowRight className="size-4" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="hero"
-                      size="xl"
-                      className="w-full border-white/25 bg-navy/25 hover:scale-100 hover:bg-navy/40"
-                    >
-                      <a href={PHONE_HREF}>
-                        <Phone className="size-4" /> {PHONE_DISPLAY}
-                      </a>
-                    </Button>
-                  </div>
+              <div className="flex w-full flex-col justify-between gap-8 rounded-3xl bg-gradient-cyan p-8 text-white sm:p-10 lg:flex-row lg:items-center lg:gap-12">
+                <div className="lg:max-w-xl">
+                  <h2 className="font-display text-2xl font-black">Potrzebujesz wyceny?</h2>
+                  <p className="mt-4 text-sm leading-relaxed text-white/85">
+                    Napisz albo zadzwoń. Pierwsza wizyta i wycena nic nie kosztują.
+                  </p>
+                </div>
+                <div className="flex w-full flex-col gap-4 sm:flex-row lg:w-auto lg:shrink-0">
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="xl"
+                    className="w-full bg-white font-semibold text-navy shadow-none hover:scale-100 hover:bg-white/90 hover:text-navy sm:flex-1 lg:w-auto lg:flex-none"
+                  >
+                    <Link to="/" hash="kontakt">
+                      Formularz kontaktowy <ArrowRight className="size-4" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="xl"
+                    className="w-full border border-white/70 bg-transparent font-semibold text-white shadow-none hover:scale-100 hover:bg-white/15 hover:text-white sm:flex-1 lg:w-auto lg:flex-none"
+                  >
+                    <a href={PHONE_HREF}>
+                      <Phone className="size-4" /> {PHONE_DISPLAY}
+                    </a>
+                  </Button>
                 </div>
               </div>
             </section>

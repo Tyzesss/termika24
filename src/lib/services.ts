@@ -18,17 +18,17 @@ export const SERVICE_PROCESS = [
   {
     step: "01",
     title: "Oględziny",
-    body: "Przyjeżdżamy na obiekt albo siadamy do dokumentacji. Pierwsza wizyta nic nie kosztuje.",
+    body: "Przyjeżdżamy na obiekt albo analizujemy dokumentację. Pierwsza wizyta jest bezpłatna.",
   },
   {
     step: "02",
     title: "Wycena",
-    body: "Dostajesz zakres i kwotę. Bez kotła czy pompy wrzuconych na zapas.",
+    body: "Przygotowujemy zakres prac i kosztorys. Urządzenia dobieramy do budynku, bez zbędnych pozycji.",
   },
   {
     step: "03",
     title: "Montaż i rozruch",
-    body: "Ta sama ekipa stawia instalację i ją odpala. Siedziba Gorlice, jedziemy po całej Polsce.",
+    body: "Ta sama ekipa montuje instalację i przeprowadza uruchomienie. Siedziba w Gorlicach, realizacje w całym kraju.",
   },
 ] as const;
 
