@@ -6,13 +6,13 @@ import { scrollToSection } from "@/lib/scroll-to-section";
 import { PHONE_HREF } from "@/lib/site";
 import { Counter } from "./Counter";
 import { Brands } from "./Brands";
-import heroImage from "@/assets/hero-hvac.jpg";
+import heroImage from "@/assets/hero-kotlownia.png";
 
 const STATS = [
-  { value: 15, suffix: "+", label: "Lat doświadczenia" },
-  { value: 2500, suffix: "+", label: "Instalacji" },
-  { value: 98, suffix: "%", label: "Zadowolonych klientów" },
-  { value: 24, suffix: "/7", label: "Serwis awaryjny" },
+  { value: 20, suffix: "", label: "Lat doświadczenia" },
+  { value: 30, suffix: "+", label: "Zrealizowanych inwestycji" },
+  { value: 9, suffix: "", label: "Rodzajów instalacji" },
+  { value: 2006, suffix: "", label: "Rok założenia", static: true },
 ];
 
 const goTo = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
@@ -28,15 +28,20 @@ export function Hero() {
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <motion.img
           src={heroImage}
-          alt="Nowoczesny dom z zamontowaną pompą ciepła o zmierzchu"
+          alt="Nowoczesna kotłownia z kotłami kondensacyjnymi i instalacją c.o."
           width={1920}
-          height={1280}
+          height={1080}
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: reduce ? 0 : 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="size-full origin-bottom scale-[1.22] object-cover object-[18%_100%] sm:scale-[1.16] sm:object-[22%_100%] lg:scale-[1.12] lg:object-[28%_100%]"
+          className="size-full origin-center scale-[1.04] object-cover object-[58%_42%]"
         />
       </div>
+      <div
+        className="absolute inset-0 -z-10"
+        style={{ backgroundImage: "var(--gradient-hero-side)" }}
+        aria-hidden
+      />
       <div
         className="absolute inset-0 -z-10"
         style={{ backgroundImage: "var(--gradient-hero)" }}
@@ -56,17 +61,17 @@ export function Hero() {
               Certyfikowany instalator
             </span>
 
-            <h1 className="mt-5 font-display text-[clamp(2.4rem,7.2vw+0.5rem,3.5rem)] leading-[1.05] font-bold tracking-tight text-navy-foreground sm:mt-6 sm:text-6xl sm:tracking-normal lg:text-7xl">
-              Twoja strefa
+            <h1 className="mt-5 font-display text-[clamp(2.4rem,7.2vw+0.5rem,3.5rem)] leading-[1.05] font-black tracking-tight text-navy-foreground sm:mt-6 sm:text-6xl sm:tracking-normal lg:text-7xl [filter:drop-shadow(0_4px_12px_oklch(0_0_0_/_0.28))_drop-shadow(0_12px_32px_oklch(0_0_0_/_0.32))_drop-shadow(0_24px_48px_oklch(0_0_0_/_0.22))]">
+              Od kotłowni
               <br className="sm:hidden" />{" "}
-              komfortu.
+              po przyłącza.
               <br />
-              <span className="text-gradient-cyan max-sm:whitespace-nowrap">Nasza technologia.</span>
+              <span className="text-gradient-cyan max-sm:whitespace-nowrap">Jedna ekipa, cały kraj.</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-sm text-navy-foreground/75 sm:mt-6 sm:text-lg">
-              Nowoczesne systemy Pomp Ciepła, Klimatyzacji, Fotowoltaiki i więcej.
-              <br className="sm:hidden" /> Twoje miasto i okolice.
+            <p className="mt-5 max-w-xl text-sm text-navy-foreground/85 sm:mt-6 sm:text-lg">
+              Instalacje wod-kan, gazowe i grzewcze, kotłownie oraz wentylacja.
+              Siedziba Gorlice, działamy w całym kraju.
             </p>
 
             <div className="mt-7 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-9 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
@@ -106,7 +111,7 @@ export function Hero() {
                 }
               >
                 <div className="font-display text-3xl font-bold text-accent sm:text-4xl">
-                  <Counter to={stat.value} />
+                  {stat.static ? stat.value : <Counter to={stat.value} />}
                   <span>{stat.suffix}</span>
                 </div>
                 <p className="mt-1 text-[11px] leading-snug font-medium tracking-wide text-navy-foreground/70 uppercase sm:mt-1.5 sm:text-xs">

@@ -32,7 +32,7 @@ function PolitykaPrywatnosci() {
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 md:h-20">
           <Link to="/" className="flex items-center gap-2 font-bold text-foreground">
-            <BrandMark />
+            <BrandMark tone="on-light" />
           </Link>
           <Link
             to="/"

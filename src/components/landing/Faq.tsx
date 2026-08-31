@@ -15,24 +15,24 @@ import { cn } from "@/lib/utils";
 
 const ITEMS = [
   {
-    q: "Ile trwa montaż pompy ciepła?",
-    a: "Zazwyczaj 2-3 dni robocze. Termin potwierdzamy po darmowym audycie technicznym.",
+    q: "Czy robicie instalacje tylko w domach, czy też w obiektach publicznych?",
+    a: "W jednych i w drugich. Montujemy instalacje w domach jednorodzinnych, a w portfolio mamy też szkoły, szpitale, uczelnie, obiekty PKP i budynki użyteczności publicznej.",
   },
   {
-    q: "Czy zapewniacie serwis gwarancyjny i pogwarancyjny?",
-    a: "Tak, posiadamy autoryzowany serwis producentów i własny magazyn części zamiennych.",
+    q: "Czy dojeżdżacie poza Gorlice?",
+    a: "Tak. Siedziba jest w Gorlicach, ale realizacje prowadzimy w całej Polsce. Dojazd do inwestycji nie stanowi problemu.",
   },
   {
-    q: "Kiedy najlepiej zamontować klimatyzację?",
-    a: "Przed sezonem letnim, ale montujemy przez cały rok. Poza sezonem terminy są krótsze.",
+    q: "Czy modernizujecie stare kotłownie, czy tylko budujecie nowe?",
+    a: "Oba zakresy. Wymieniamy kotły, przebudowujemy kotłownie gazowe i olejowe, dokładamy automatykę i węzły cieplne. Robimy też kotłownie od zera.",
   },
   {
-    q: "Czy pomagacie w doborze sprzętu?",
-    a: "Tak, wykonujemy darmowy audyt i dobieramy moc urządzeń do realnych potrzeb budynku.",
+    q: "Czy wykonujecie przyłącza, czy tylko instalacje wewnątrz budynku?",
+    a: "Jedno i drugie. Przyłącza wodociągowe, kanalizacyjne i gazowe oraz instalacje wewnętrzne: c.o., wod-kan, wentylacja, klimatyzacja, chłodnictwo i kotłownie.",
   },
   {
-    q: "Czy audyt i wycena są płatne?",
-    a: "Nie. Audyt techniczny i orientacyjna wycena są bezpłatne i bez zobowiązań.",
+    q: "Czy wycena i dobór urządzeń są płatne?",
+    a: "Nie. Wycena i wizyta wstępna są bezpłatne. Pomagamy dobrać kocioł, pompę ciepła albo zakres instalacji do budynku, bez dokładania zbędnego sprzętu.",
   },
 ];
 
@@ -64,17 +64,17 @@ export function Faq() {
           <DarkEyebrow data-scroll-target icon={CircleHelp}>
             FAQ
           </DarkEyebrow>
-          <h2 className="mt-5 font-display text-3xl font-bold sm:text-5xl">
+          <h2 className="mt-5 font-display text-3xl font-black sm:text-5xl">
             Często zadawane <span className="text-gradient-cyan">pytania</span>
           </h2>
           <p className="mt-4 max-w-md text-navy-foreground/70">
-            Nie znalazłeś odpowiedzi? Zadzwoń, oddzwonimy w ciągu jednego dnia roboczego.
+            Pytania od inwestorów, zarządców i właścicieli budynków. Nie ma Twojego? Zadzwoń.
           </p>
           <CheckList
             items={[
-              "Oferujemy darmowy audyt techniczny",
-              "Pomagamy w dotacjach Czyste Powietrze",
-              "Wyceniamy bez zobowiązań",
+              "Domy, szkoły, szpitale i firmy",
+              "Nowe kotłownie i modernizacje",
+              "Przyłącza i instalacje wewnętrzne",
             ]}
           />
           <div className="mt-8 hidden w-full lg:block">

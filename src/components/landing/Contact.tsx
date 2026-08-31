@@ -13,16 +13,19 @@ import {
 } from "@/components/ui/select";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/utils";
+import { SERVICES } from "@/lib/services";
 import {
   ADDRESS,
   EMAIL,
   EMAIL_HREF,
   HOURS,
+  MAPS_EMBED_URL,
   MAPS_URL,
   PHONE_DISPLAY,
   PHONE_HREF,
-  SERVICE_AREA,
 } from "@/lib/site";
+
+const SERVICE_OPTIONS = [...SERVICES.map((s) => s.title), "Serwis", "Inne"];
 
 const INFO = [
   {
@@ -74,14 +77,14 @@ export function Contact() {
           >
             Kontakt
           </span>
-          <h2 className="mt-5 font-display text-3xl font-bold sm:text-4xl md:whitespace-nowrap lg:text-5xl">
+          <h2 className="mt-5 font-display text-3xl font-black sm:text-4xl md:whitespace-nowrap lg:text-5xl">
             Porozmawiajmy o
             <span className="hidden md:inline"> </span>
             <br className="md:hidden" />
             <span className="text-gradient-cyan">Twoim projekcie</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Odpowiadamy w ciągu jednego dnia roboczego. Audyt i wycena są bezpłatne.
+            Odpowiadamy w ciągu jednego dnia roboczego. Wycena i wizyta wstępna są bezpłatne.
           </p>
         </Reveal>
 
@@ -127,27 +130,15 @@ export function Contact() {
             </Reveal>
 
             <Reveal delay={0.08} className="order-3 flex min-h-44 flex-col lg:min-h-0 lg:flex-1">
-              <div className="relative flex min-h-44 overflow-hidden rounded-2xl border border-border/70 bg-[oklch(0.32_0.06_265)] shadow-card transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:h-full lg:flex-1 md:hover:-translate-y-0.5">
-                <div
-                  className="absolute inset-0 opacity-60"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(oklch(1 0 0 / 0.18) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.18) 1px, transparent 1px)",
-                    backgroundSize: "44px 44px",
-                  }}
-                  aria-hidden
+              <div className="relative flex min-h-52 overflow-hidden rounded-2xl border border-border/70 bg-navy shadow-card lg:h-full lg:flex-1 lg:min-h-0">
+                <iframe
+                  title={`Mapa Google: ${ADDRESS}`}
+                  src={MAPS_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 size-full border-0"
+                  allowFullScreen
                 />
-                <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center">
-                  <span className="flex size-12 items-center justify-center rounded-full bg-gradient-cyan shadow-glow">
-                    <MapPin className="size-5 text-white" />
-                  </span>
-                  <p className="font-display text-lg font-semibold text-navy-foreground">
-                    Działamy w Twoim mieście i okolicach
-                  </p>
-                  <p className="max-w-xs text-sm text-navy-foreground/65">
-                    {SERVICE_AREA}. Dojazd na audyt gratis.
-                  </p>
-                </div>
               </div>
             </Reveal>
           </div>
@@ -237,14 +228,7 @@ export function Contact() {
                       <SelectValue placeholder="Wybierz z listy" />
                     </SelectTrigger>
                     <SelectContent className="rounded-lg">
-                      {[
-                        "Pompy ciepła",
-                        "Klimatyzacja",
-                        "Fotowoltaika",
-                        "Ogrzewanie podłogowe",
-                        "Rekuperacja",
-                        "Serwis",
-                      ].map((option) => (
+                      {SERVICE_OPTIONS.map((option) => (
                         <SelectItem key={option} value={option}>
                           {option}
                         </SelectItem>

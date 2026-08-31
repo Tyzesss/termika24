@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PolitykaPrywatnosciRouteImport } from './routes/polityka-prywatnosci'
+import { Route as UslugiSlugRouteImport } from './routes/uslugi.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const PolitykaPrywatnosciRoute = PolitykaPrywatnosciRouteImport.update({
   path: '/polityka-prywatnosci',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UslugiSlugRoute = UslugiSlugRouteImport.update({
+  id: '/uslugi/$slug',
+  path: '/uslugi/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
+  '/uslugi/$slug': typeof UslugiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
+  '/uslugi/$slug': typeof UslugiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
+  '/uslugi/$slug': typeof UslugiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/polityka-prywatnosci'
+  fullPaths: '/' | '/polityka-prywatnosci' | '/uslugi/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/polityka-prywatnosci'
-  id: '__root__' | '/' | '/polityka-prywatnosci'
+  to: '/' | '/polityka-prywatnosci' | '/uslugi/$slug'
+  id: '__root__' | '/' | '/polityka-prywatnosci' | '/uslugi/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PolitykaPrywatnosciRoute: typeof PolitykaPrywatnosciRoute
+  UslugiSlugRoute: typeof UslugiSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PolitykaPrywatnosciRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uslugi/$slug': {
+      id: '/uslugi/$slug'
+      path: '/uslugi/$slug'
+      fullPath: '/uslugi/$slug'
+      preLoaderRoute: typeof UslugiSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PolitykaPrywatnosciRoute: PolitykaPrywatnosciRoute,
+  UslugiSlugRoute: UslugiSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,36 +1,48 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, ExternalLink, Quote, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import type { LucideIcon } from "lucide-react";
+import {
+  Award,
+  ChevronLeft,
+  ChevronRight,
+  MapPinned,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileCarousel } from "./MobileCarousel";
 import { Reveal } from "./Reveal";
-import { GOOGLE_RATING, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEWS_URL } from "@/lib/site";
+import { GOOGLE_RATING, GOOGLE_REVIEWS_URL } from "@/lib/site";
 
-const REVIEWS = [
+const REASONS: {
+  icon: LucideIcon;
+  title: string;
+  tag: string;
+  text: string;
+}[] = [
   {
-    name: "Marcin",
-    place: "Twoje miasto",
-    service: "Pompa ciepła",
-    text: "Pompa ciepła zamontowana w dwa dni, ekipa zostawiła po sobie idealny porządek. Rachunki za ogrzewanie spadły o ponad połowę.",
+    icon: Award,
+    title: "Doświadczenie od 2006",
+    tag: "20+ lat na rynku",
+    text: "Systematyczne szkolenia i sprawdzone procedury montażu. Wiemy, jak dopasować instalację do domu, firmy i budynku użyteczności publicznej.",
   },
   {
-    name: "Anna",
-    place: "Twoje miasto",
-    service: "Klimatyzacja",
-    text: "Pełen profesjonalizm od pierwszej rozmowy. Doradzili tańsze rozwiązanie niż to, o które pytałam. Klimatyzacja działa bezgłośnie.",
+    icon: ShieldCheck,
+    title: "Materiały z atestami",
+    tag: "Bezpieczeństwo i jakość",
+    text: "Pracujemy na certyfikowanych komponentach od sprawdzonych producentów. Każdy projekt traktujemy jak inwestycję na lata, nie jednorazowy remont.",
   },
   {
-    name: "Tomasz",
-    place: "Twoje miasto",
-    service: "Fotowoltaika",
-    text: "Fotowoltaika i rekuperacja w jednym projekcie. Wszystko dopięte na czas, formalności dotacyjne załatwione za nas.",
+    icon: MapPinned,
+    title: "Gorlice i cała Polska",
+    tag: "Dojazd do klienta",
+    text: "Siedziba w Gorlicach, ale realizujemy zlecenia w całym kraju. Od lokalnych inwestycji po większe obiekty komercyjne i publiczne.",
   },
   {
-    name: "Katarzyna",
-    place: "Twoje miasto",
-    service: "Audyt",
-    text: "Audyt konkretny, bez naciągania na zbędne urządzenia. Montaż w terminie, serwis oddzwania, gdy trzeba.",
+    icon: Users,
+    title: "Jeden zespół, pełna obsługa",
+    tag: "Od wyceny po serwis",
+    text: "Dobór urządzeń, montaż, uruchomienie i wsparcie po instalacji. Masz jednego partnera na każdym etapie projektu.",
   },
 ];
 
@@ -42,58 +54,59 @@ function loopOffset(index: number, selected: number, length: number) {
   return delta;
 }
 
-function ReviewCard({
-  review,
+function GoogleStar({ fill }: { fill: number }) {
+  const path =
+    "M12 2.1 14.94 8.4l6.86.74-5.12 4.7 1.42 6.76L12 17.77 5.9 20.6l1.42-6.76-5.12-4.7 6.86-.74L12 2.1z";
+  return (
+    <span className="relative size-5 shrink-0">
+      <svg viewBox="0 0 24 24" className="size-5 text-accent/20" aria-hidden>
+        <path fill="currentColor" d={path} />
+      </svg>
+      <svg
+        viewBox="0 0 24 24"
+        className="absolute inset-0 size-5 text-accent"
+        style={{ clipPath: `inset(0 ${(1 - fill) * 100}% 0 0)` }}
+        aria-hidden
+      >
+        <path fill="currentColor" d={path} />
+      </svg>
+    </span>
+  );
+}
+
+function ReasonCard({
+  item,
   faded = false,
 }: {
-  review: (typeof REVIEWS)[number];
+  item: (typeof REASONS)[number];
   faded?: boolean;
 }) {
   return (
-    <figure
+    <article
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-2xl bg-card p-4 sm:p-5 md:min-h-[17rem] md:p-8",
+        "relative flex h-full flex-col overflow-hidden rounded-2xl bg-card p-5 sm:p-6 md:min-h-[17rem] md:p-8",
         faded
           ? "border border-transparent"
           : "border border-border/70 max-md:shadow-none md:border-border/40",
       )}
     >
-      <Quote
-        className="pointer-events-none absolute top-3 right-3 size-10 text-accent/20 md:size-12"
-        strokeWidth={1.5}
-        aria-hidden
-      />
-      <blockquote className="min-h-0 flex-1 pr-10 text-sm leading-relaxed text-muted-foreground md:pr-12 md:text-xl md:leading-snug lg:text-[1.375rem]">
-        „{review.text}”
-      </blockquote>
-      <figcaption className="mt-3 flex items-center gap-3 border-t border-border/70 pt-2.5 md:mt-6 md:pt-5">
-        <span
-          aria-hidden
-          className="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent/12 font-display text-sm font-bold text-accent md:size-11 md:text-base"
-        >
-          {review.name[0]}
+      <div className="flex items-start justify-between gap-4">
+        <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-cyan text-white">
+          <item.icon className="size-5" />
         </span>
-        <div className="min-w-0 flex-1">
-          <span className="block truncate text-sm font-semibold text-foreground md:text-lg">
-            {review.name}
-          </span>
-          <div className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground md:text-sm">
-            <span className="truncate">{review.place}</span>
-            <span className="size-0.5 shrink-0 rounded-full bg-muted-foreground/40" aria-hidden />
-            <span className="truncate font-medium text-accent">{review.service}</span>
-          </div>
-        </div>
-        <div className="flex shrink-0 items-center gap-0.5" aria-label="5 na 5">
-          {Array.from({ length: 5 }).map((_, s) => (
-            <Star key={s} className="size-4 fill-accent text-accent md:size-5" />
-          ))}
-        </div>
-      </figcaption>
-    </figure>
+        <span className="rounded-full bg-accent/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-accent uppercase">
+          {item.tag}
+        </span>
+      </div>
+      <h3 className="mt-5 font-display text-lg font-bold text-foreground md:text-2xl">{item.title}</h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground md:text-base md:leading-relaxed">
+        {item.text}
+      </p>
+    </article>
   );
 }
 
-function ReviewCarousel() {
+function ReasonCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
     loop: true,
@@ -123,7 +136,7 @@ function ReviewCarousel() {
     <div className="relative">
       <button
         type="button"
-        aria-label="Poprzednia opinia"
+        aria-label="Poprzednia karta"
         onClick={() => emblaApi?.scrollPrev()}
         className="absolute top-1/2 left-2 z-30 hidden size-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-xl border border-border/70 bg-card text-foreground shadow-card transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-transparent hover:bg-gradient-cyan hover:text-white hover:shadow-glow md:inline-flex lg:left-1"
       >
@@ -131,7 +144,7 @@ function ReviewCarousel() {
       </button>
       <button
         type="button"
-        aria-label="Następna opinia"
+        aria-label="Następna karta"
         onClick={() => emblaApi?.scrollNext()}
         className="absolute top-1/2 right-2 z-30 hidden size-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-xl border border-border/70 bg-card text-foreground shadow-card transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-transparent hover:bg-gradient-cyan hover:text-white hover:shadow-glow md:inline-flex lg:right-1"
       >
@@ -143,12 +156,12 @@ function ReviewCarousel() {
 
       <div className="overflow-hidden py-4 md:px-8 md:pt-5 md:pb-14 lg:px-10" ref={emblaRef}>
         <div className="flex items-center touch-pan-y">
-          {REVIEWS.map((review, idx) => {
-            const dist = Math.abs(loopOffset(idx, selected, REVIEWS.length));
+          {REASONS.map((item, idx) => {
+            const dist = Math.abs(loopOffset(idx, selected, REASONS.length));
             const active = dist === 0;
             return (
               <div
-                key={review.name}
+                key={item.title}
                 className="min-w-0 shrink-0 grow-0 basis-[86%] px-1 sm:basis-[70%] md:basis-[46%] md:px-0 lg:basis-[42%]"
               >
                 <div
@@ -171,7 +184,7 @@ function ReviewCarousel() {
                     dist > 1 && "scale-[0.82] opacity-15 md:scale-[0.58]",
                   )}
                 >
-                  <ReviewCard review={review} faded={!active} />
+                  <ReasonCard item={item} faded={!active} />
                 </div>
               </div>
             );
@@ -180,11 +193,11 @@ function ReviewCarousel() {
       </div>
 
       <div className="mt-2 flex items-center justify-center gap-1.5 md:mt-4">
-        {REVIEWS.map((review, idx) => (
+        {REASONS.map((item, idx) => (
           <button
-            key={review.name}
+            key={item.title}
             type="button"
-            aria-label={`Opinia ${idx + 1}`}
+            aria-label={`Karta ${idx + 1}: ${item.title}`}
             aria-current={selected === idx}
             onClick={() => emblaApi?.scrollTo(idx)}
             className={cn(
@@ -203,7 +216,7 @@ function ReviewCarousel() {
 export function Testimonials() {
   return (
     <section
-      id="opinie"
+      id="dlaczego"
       className="flex flex-col py-16 max-md:pb-28 md:min-h-svh md:justify-center md:py-20"
     >
       <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
@@ -212,46 +225,48 @@ export function Testimonials() {
             data-scroll-target
             className="mx-auto block w-fit font-display text-xs font-semibold tracking-[0.18em] text-gradient-cyan uppercase"
           >
-            Opinie klientów
+            Dlaczego TERMIKA
           </span>
-          <h2 className="mt-5 font-display text-3xl font-bold sm:text-5xl">
-            Co mówią o nas <span className="text-gradient-cyan">klienci?</span>
+          <h2 className="mt-5 font-display text-3xl font-black sm:text-5xl">
+            Zaufanie, które
+            <br />
+            <span className="text-gradient-cyan">budujemy latami</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Opinie z naszego profilu Google Maps.
+            Jeden zespół, sprawdzone materiały i realne wsparcie na każdym etapie inwestycji.
           </p>
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 transition-opacity duration-300 hover:opacity-80 md:mt-6"
-          >
-            <span className="flex items-center gap-0.5" aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-4 fill-accent text-accent md:size-5" />
-              ))}
-            </span>
-            <span className="text-base font-bold text-foreground md:text-xl">{GOOGLE_RATING}</span>
-            <span className="text-sm text-muted-foreground md:text-base">· {GOOGLE_REVIEW_COUNT} opinii</span>
-          </a>
         </Reveal>
 
         <Reveal delay={0.1} className="mt-4 md:mt-5">
-          <MobileCarousel
-            items={REVIEWS}
-            renderItem={(review) => <ReviewCard review={review} />}
-          />
+          <MobileCarousel items={REASONS} renderItem={(item) => <ReasonCard item={item} />} />
           <div className="hidden md:block">
-            <ReviewCarousel />
+            <ReasonCarousel />
           </div>
         </Reveal>
 
         <Reveal delay={0.2} className="mt-10 flex justify-center">
-          <Button asChild variant="cyan" size="xl">
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer">
-              Zobacz wszystkie opinie <ExternalLink className="size-4" />
-            </a>
-          </Button>
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-4"
+            aria-label={`Opinie Google: ocena ${GOOGLE_RATING.toLocaleString("pl-PL")}. Otwórz w Google Maps.`}
+          >
+            <span className="font-display text-4xl font-black leading-none tracking-tight text-accent">
+              {GOOGLE_RATING.toLocaleString("pl-PL")}
+            </span>
+            <span className="flex flex-col items-start gap-1">
+              <span className="flex items-center gap-0.5" aria-hidden>
+                {Array.from({ length: 5 }, (_, i) => {
+                  const fill = Math.min(1, Math.max(0, GOOGLE_RATING - i));
+                  return <GoogleStar key={i} fill={fill} />;
+                })}
+              </span>
+              <span className="font-display text-[11px] font-semibold tracking-[0.18em] text-muted-foreground uppercase transition-colors duration-300 group-hover:text-accent">
+                Opinie Google
+              </span>
+            </span>
+          </a>
         </Reveal>
       </div>
     </section>

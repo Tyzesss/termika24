@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -9,12 +10,12 @@ import { BrandMark } from "./BrandMark";
 const NAV = [
   { label: "Usługi", href: "#uslugi" },
   { label: "Realizacje", href: "#realizacje" },
-  { label: "Opinie", href: "#opinie" },
+  { label: "Dlaczego my", href: "#dlaczego" },
   { label: "FAQ", href: "#faq" },
   { label: "Kontakt", href: "#kontakt" },
 ];
 
-export function Header() {
+export function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -41,12 +42,13 @@ export function Header() {
     };
   }, [open]);
 
+  const navHref = (hash: string) => (alwaysSolid ? `/${hash}` : hash);
+
   const goTo = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setOpen(false);
 
-    // Wait until menu close starts painting, then scroll with collapsed-bar offset.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         scrollToSection(href);
@@ -54,7 +56,15 @@ export function Header() {
     });
   };
 
-  const solid = scrolled || open;
+  const onNav = (hash: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    if (alwaysSolid) {
+      setOpen(false);
+      return;
+    }
+    goTo(hash)(e);
+  };
+
+  const solid = alwaysSolid || scrolled || open;
 
   return (
     <>
@@ -88,16 +98,22 @@ export function Header() {
           )}
         />
         <div className="relative mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-5 py-4 lg:px-8">
-          <a href="#top" aria-label="KLIMATPRO" onClick={goTo("#top")}>
-            <BrandMark wordmarkClassName="text-navy-foreground" />
-          </a>
+          {alwaysSolid ? (
+            <Link to="/" aria-label="TERMIKA">
+              <BrandMark />
+            </Link>
+          ) : (
+            <a href="#top" aria-label="TERMIKA" onClick={goTo("#top")}>
+              <BrandMark />
+            </a>
+          )}
 
           <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {NAV.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
-                onClick={goTo(item.href)}
+                href={navHref(item.href)}
+                onClick={onNav(item.href)}
                 className="text-sm font-medium text-navy-foreground/80 transition-colors duration-300 hover:text-accent"
               >
                 {item.label}
@@ -114,8 +130,8 @@ export function Header() {
               {PHONE_DISPLAY}
             </a>
             <Button asChild variant="cyan" size="pill">
-              <a href="#kontakt" onClick={goTo("#kontakt")}>
-                Darmowa Wycena
+              <a href={navHref("#kontakt")} onClick={onNav("#kontakt")}>
+                Darmowa wycena
               </a>
             </Button>
           </div>
@@ -160,9 +176,9 @@ export function Header() {
                 {NAV.map((item) => (
                   <a
                     key={item.href}
-                    href={item.href}
+                    href={navHref(item.href)}
                     tabIndex={open ? undefined : -1}
-                    onClick={goTo(item.href)}
+                    onClick={onNav(item.href)}
                     className="rounded-xl px-3.5 py-2.5 text-[0.95rem] font-semibold tracking-tight text-navy-foreground transition-colors duration-200 hover:bg-navy-foreground/10 hover:text-accent active:bg-navy-foreground/10"
                   >
                     {item.label}

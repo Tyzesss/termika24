@@ -1,7 +1,7 @@
 import { BadgeCheck } from "lucide-react";
 import { Reveal } from "./Reveal";
 
-const BRANDS = ["Panasonic", "LG", "Daikin", "Vaillant", "Mitsubishi", "Bosch"];
+const BRANDS = ["Vaillant", "Viessmann", "De Dietrich", "Daikin", "Uponor", "Geberit"];
 
 export function Brands() {
   const strip = [...BRANDS, ...BRANDS];
@@ -10,7 +10,6 @@ export function Brands() {
     <div
       className="relative z-10 -mt-36 pt-36 sm:-mt-48 sm:pt-48"
       style={{
-        // One continuous paint: hero photo → navy. No hard box edge.
         backgroundImage: `linear-gradient(
           to bottom,
           transparent 0%,
@@ -30,7 +29,7 @@ export function Brands() {
         <div className="mx-auto flex max-w-6xl justify-center px-5 lg:px-8">
           <Reveal>
             <span className="glass-panel inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-navy-foreground uppercase opacity-90">
-              <BadgeCheck className="size-3.5 text-accent" /> Autoryzowany partner marek
+              <BadgeCheck className="size-3.5 text-accent" /> Sprawdzone systemy
             </span>
           </Reveal>
         </div>

@@ -18,7 +18,11 @@ import workRecupM from "@/assets/work-recup-m.jpg";
 import workAcOutdoorM from "@/assets/work-ac-outdoor-m.jpg";
 import workUnderfloorM from "@/assets/work-underfloor-m.jpg";
 
-type Category = "Pompy ciepła" | "Klimatyzacja" | "Fotowoltaika" | "Rekuperacja";
+type Category =
+  | "Kotłownie i c.o."
+  | "Instalacje sanitarne"
+  | "Pompy ciepła"
+  | "Centralne ogrzewanie";
 
 const PROJECTS: {
   image: string;
@@ -26,6 +30,7 @@ const PROJECTS: {
   category: Category;
   title: string;
   place: string;
+  scope: string;
   alt: string;
   featured?: boolean;
 }[] = [
@@ -33,50 +38,61 @@ const PROJECTS: {
     image: workHeatpump,
     imageMobile: workHeatpumpM,
     category: "Pompy ciepła",
-    title: "Pompa ciepła powietrze-woda",
-    place: "Dom jednorodzinny, Twoje miasto",
-    alt: "Jednostka zewnętrzna pompy ciepła zamontowana na betonowych stopach przy domu",
+    title: "PKP Kraków, nastawnie Płaszów i Bieżanów",
+    place: "Kraków, 2018",
+    scope:
+      "Instalacja c.o. i wod-kan wraz z technologią wytwarzania ciepła oraz montażem gazowych pomp ciepła.",
+    alt: "Jednostka zewnętrzna pompy ciepła przy budynku technicznym",
     featured: true,
-  },
-  {
-    image: workSolar,
-    imageMobile: workSolarM,
-    category: "Fotowoltaika",
-    title: "Instalacja PV na dachu",
-    place: "Dom jednorodzinny, Twoje miasto",
-    alt: "Rzędy paneli fotowoltaicznych na ciemnym dachu nowoczesnego domu",
-  },
-  {
-    image: workAc,
-    imageMobile: workAcM,
-    category: "Klimatyzacja",
-    title: "Klimatyzacja split",
-    place: "Sypialnia, Twoje miasto",
-    alt: "Ścienna jednostka klimatyzacji w nowoczesnej sypialni",
   },
   {
     image: workRecup,
     imageMobile: workRecupM,
-    category: "Rekuperacja",
-    title: "Rekuperacja z odzyskiem ciepła",
-    place: "Pomieszczenie techniczne, Twoje miasto",
-    alt: "Centrala rekuperacji z zaizolowanymi kanałami w pomieszczeniu technicznym",
-  },
-  {
-    image: workAcOutdoor,
-    imageMobile: workAcOutdoorM,
-    category: "Klimatyzacja",
-    title: "Jednostki zewnętrzne multi-split",
-    place: "Dom jednorodzinny, Twoje miasto",
-    alt: "Dwie jednostki zewnętrzne klimatyzacji zamontowane na elewacji domu",
+    category: "Instalacje sanitarne",
+    title: "Szpital Miejski w Rudzie Śląskiej",
+    place: "Ruda Śląska, 2015-2016",
+    scope:
+      "Instalacja c.o., c.w.u. i kanalizacji, węzeł cieplny 910 kW oraz kolektory słoneczne.",
+    alt: "Nowoczesna kotłownia i instalacja grzewcza w obiekcie użyteczności publicznej",
   },
   {
     image: workUnderfloor,
     imageMobile: workUnderfloorM,
-    category: "Pompy ciepła",
-    title: "Ogrzewanie podłogowe",
-    place: "Kotłownia, Twoje miasto",
-    alt: "Rozdzielacz ogrzewania podłogowego i hydrobox pompy ciepła w kotłowni",
+    category: "Centralne ogrzewanie",
+    title: "Uniwersytet Ekonomiczny we Wrocławiu",
+    place: "Wrocław, 2018",
+    scope: "Wymiana instalacji centralnego ogrzewania w budynkach należących do uczelni.",
+    alt: "Rozdzielacz instalacji centralnego ogrzewania w pomieszczeniu technicznym",
+  },
+  {
+    image: workAc,
+    imageMobile: workAcM,
+    category: "Instalacje sanitarne",
+    title: "Dom Pomocy Społecznej w Gorlicach",
+    place: "Gorlice, 2014",
+    scope:
+      "Instalacja c.o. i c.w.u. oraz adaptacja łazienek na pokoje kąpielowe dla niepełnosprawnych.",
+    alt: "Instalacja sanitarna w budynku opieki społecznej",
+  },
+  {
+    image: workSolar,
+    imageMobile: workSolarM,
+    category: "Kotłownie i c.o.",
+    title: "Zespół Szkół Rolniczych w Zarzeczu",
+    place: "Zarzecze, 2012",
+    scope:
+      "Modernizacja kotłowni gazowej 550 kW z wymianą kotła kondensacyjnego De Dietrich i automatyki.",
+    alt: "Kotłownia gazowa po modernizacji w obiekcie szkolnym",
+  },
+  {
+    image: workAcOutdoor,
+    imageMobile: workAcOutdoorM,
+    category: "Instalacje sanitarne",
+    title: "Budowa ZMU w Krakowie",
+    place: "Kraków, 2016",
+    scope:
+      "Instalacja c.o., ciepłej i zimnej wody oraz kanalizacji w zespole mieszkalno-usługowym.",
+    alt: "Instalacje sanitarne w nowym budynku wielorodzinnym",
   },
 ];
 
@@ -181,14 +197,15 @@ export function Realizations() {
           <DarkEyebrow data-scroll-target icon={Images} className="md:mx-auto">
             Realizacje
           </DarkEyebrow>
-          <h2 className="mt-5 font-display text-3xl font-bold sm:text-5xl md:whitespace-nowrap">
+          <h2 className="mt-5 font-display text-3xl font-black sm:text-5xl md:whitespace-nowrap">
             Instalacje, które
             <span className="hidden md:inline"> </span>
             <br className="md:hidden" />
             <span className="text-gradient-cyan">już działają</span>
           </h2>
           <p className="mt-4 max-w-2xl text-navy-foreground/70 md:mx-auto">
-            Zobacz, jak wygląda montaż pomp ciepła, klimatyzacji i fotowoltaiki u naszych klientów.
+            Ponad 30 udokumentowanych inwestycji z portfolio TERMIKA: szpitale, szkoły,
+            uczelnie, obiekty PKP i budynki wielorodzinne. Poniżej wybrane realizacje.
           </p>
         </Reveal>
 
@@ -198,11 +215,7 @@ export function Realizations() {
             dotsOnDark
             className="animate-in fade-in duration-500 ease-out"
             renderItem={(project, i) => (
-              <ProjectCard
-                project={project}
-                featured
-                onOpen={() => openAt(i)}
-              />
+              <ProjectCard project={project} featured onOpen={() => openAt(i)} />
             )}
           />
           <div className="hidden gap-4 md:grid md:grid-cols-12 md:auto-rows-[minmax(15.25rem,auto)]">
@@ -241,7 +254,7 @@ export function Realizations() {
             {current ? (
               <>
                 <Dialog.Title className="sr-only">
-                  {current.title} — {current.category}
+                  {current.title}, {current.category}
                 </Dialog.Title>
                 <div className="flex items-center justify-between gap-3 px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-3 sm:px-6">
                   <div className="min-w-0">
@@ -279,11 +292,14 @@ export function Realizations() {
                       height={1024}
                       className="max-h-[min(72vh,44rem)] w-auto max-w-full rounded-xl object-contain shadow-lift"
                     />
-                    <figcaption className="mt-4 flex items-center gap-1.5 text-sm text-navy-foreground/70">
-                      <MapPin className="size-3.5 shrink-0" />
-                      {current.place}
+                    <figcaption className="mt-4 max-w-xl text-center text-sm text-navy-foreground/70">
+                      <span className="flex items-center justify-center gap-1.5">
+                        <MapPin className="size-3.5 shrink-0" />
+                        {current.place}
+                      </span>
+                      <span className="mt-2 block text-navy-foreground/55">{current.scope}</span>
                       {PROJECTS.length > 1 ? (
-                        <span className="ml-2 text-navy-foreground/40">
+                        <span className="mt-2 block text-navy-foreground/40">
                           {active! + 1} / {PROJECTS.length}
                         </span>
                       ) : null}
