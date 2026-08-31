@@ -38,7 +38,7 @@ function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen scroll-smooth">
+    <div className="min-h-screen">
       <Header />
       <main>
         <Hero />

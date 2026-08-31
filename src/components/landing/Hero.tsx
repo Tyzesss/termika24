@@ -25,7 +25,7 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="top" className="relative isolate overflow-x-clip bg-navy">
+    <section id="top" className="relative isolate bg-navy">
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <motion.img
           src={heroImage}
@@ -51,11 +51,12 @@ export function Hero() {
 
       <div className="relative z-20 flex min-h-dvh flex-col md:h-svh md:min-h-svh">
         <div className="relative z-0 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-8 px-5 pt-28 pb-16 sm:gap-14 sm:pt-32 sm:pb-16 md:h-full lg:px-8 lg:pt-36 lg:pb-20">
-          <motion.div
-            initial={reduce ? false : { y: 18 }}
-            animate={{ y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto flex w-full max-w-4xl flex-col items-center text-center"
+          <div
+            className={
+              reduce
+                ? "mx-auto flex w-full max-w-4xl flex-col items-center text-center"
+                : "hero-rise mx-auto flex w-full max-w-4xl flex-col items-center text-center"
+            }
           >
             <DarkEyebrow icon={ShieldCheck}>Certyfikowany instalator</DarkEyebrow>
 
@@ -91,21 +92,22 @@ export function Hero() {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={reduce ? false : { y: 18 }}
-            animate={{ y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto grid w-full max-w-[58rem] shrink-0 grid-cols-2 gap-x-6 gap-y-3.5 max-md:mt-1 sm:gap-3.5 lg:grid-cols-4 lg:gap-4"
+          <div
+            className={
+              reduce
+                ? "mx-auto grid w-full max-w-[58rem] shrink-0 grid-cols-2 gap-x-6 gap-y-3.5 max-md:mt-1 sm:gap-3.5 lg:grid-cols-4 lg:gap-4"
+                : "hero-rise-delayed mx-auto grid w-full max-w-[58rem] shrink-0 grid-cols-2 gap-x-6 gap-y-3.5 max-md:mt-1 sm:gap-3.5 lg:grid-cols-4 lg:gap-4"
+            }
           >
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
                 className={
                   i >= 2
-                    ? "glass-panel glass-panel-light hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
-                    : "glass-panel glass-panel-light flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6"
+                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-2xl md:px-5 md:py-6"
                 }
               >
                 <div className="font-display text-4xl font-black leading-none text-accent lg:text-[2.75rem]">
@@ -118,7 +120,7 @@ export function Hero() {
                 <span className="mt-2.5 h-0.5 w-8 rounded-full bg-accent/75 sm:mt-3 sm:w-7" aria-hidden />
               </div>
             ))}
-          </motion.div>
+          </div>
 
           <motion.a
             href="#uslugi"

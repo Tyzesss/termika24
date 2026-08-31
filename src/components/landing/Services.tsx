@@ -43,6 +43,7 @@ function ServiceCard({
       <Link
         to="/uslugi/$slug"
         params={{ slug: service.slug }}
+        resetScroll
         className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-accent transition-all duration-300 ease-out hover:gap-2.5 hover:text-accent/80"
       >
         Dowiedz się więcej <ArrowUpRight className="size-4" />

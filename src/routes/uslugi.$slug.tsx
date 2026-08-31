@@ -12,12 +12,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  getRelatedRealizations,
-  getService,
-  SERVICE_PROCESS,
-  SERVICES,
-} from "@/lib/services";
+import { getService, SERVICE_PROCESS, SERVICES } from "@/lib/services";
+import { getServiceRealizationCards } from "@/lib/realization-cards";
+import { ServiceRealizations } from "@/components/landing/ServiceRealizations";
 import { PHONE_DISPLAY, PHONE_HREF, SITE_NAME } from "@/lib/site";
 import imgKotlownie from "@/assets/service-kotlownie.jpg";
 import imgCo from "@/assets/service-co.jpg";
@@ -75,6 +72,7 @@ function OtherServiceCard({ item }: { item: (typeof SERVICES)[number] }) {
     <Link
       to="/uslugi/$slug"
       params={{ slug: item.slug }}
+      resetScroll
       className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card max-md:shadow-none md:transition-all md:duration-300 md:hover:border-accent/40 md:hover:shadow-card"
     >
       {thumb ? (
@@ -117,7 +115,7 @@ function ServicePage() {
   const { service } = Route.useLoaderData();
   const media = IMAGES[service.slug];
   const others = SERVICES.filter((s) => s.slug !== service.slug);
-  const related = getRelatedRealizations(service.slug);
+  const related = getServiceRealizationCards(service.slug);
 
   return (
     <div className="min-h-screen bg-background">
@@ -143,14 +141,7 @@ function ServicePage() {
           />
 
           <div className="relative mx-auto flex min-h-[28rem] max-w-7xl flex-col justify-end px-5 pt-32 pb-14 sm:min-h-[32rem] sm:pt-36 sm:pb-16 lg:min-h-[36rem] lg:px-8 lg:pb-20">
-            <p className="text-sm text-navy-foreground/80">
-              <Link to="/" hash="uslugi" className="transition-colors hover:text-accent">
-                Usługi
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-navy-foreground">{service.title}</span>
-            </p>
-            <h1 className="mt-5 max-w-3xl font-display text-4xl font-black tracking-tight text-navy-foreground sm:text-5xl lg:text-6xl [filter:drop-shadow(0_2px_8px_oklch(0_0_0_/_0.55))_drop-shadow(0_8px_24px_oklch(0_0_0_/_0.45))]">
+            <h1 className="max-w-3xl font-display text-4xl font-black tracking-tight text-navy-foreground sm:text-5xl lg:text-6xl [filter:drop-shadow(0_2px_8px_oklch(0_0_0_/_0.55))_drop-shadow(0_8px_24px_oklch(0_0_0_/_0.45))]">
               {service.title}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-navy-foreground/92 sm:text-lg [text-shadow:0_1px_12px_oklch(0_0_0_/_0.7)]">
@@ -244,28 +235,14 @@ function ServicePage() {
                 ))}
               </ol>
             </section>
+          </div>
+        </div>
 
-            {related.length > 0 ? (
-              <section className="mt-16 lg:mt-20">
-                <h2 className="font-display text-2xl font-black text-navy-foreground sm:text-3xl">
-                  Nasze realizacje <span className="text-gradient-cyan">{service.titleOf}</span>
-                </h2>
-                <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-                  {related.map((item) => (
-                    <li
-                      key={item.title}
-                      className="rounded-3xl bg-navy-foreground/8 p-7 ring-1 ring-navy-foreground/15"
-                    >
-                      <p className="text-xs font-medium text-accent">{item.year}</p>
-                      <p className="mt-2 font-semibold text-navy-foreground">{item.title}</p>
-                      <p className="mt-3 text-sm leading-relaxed text-navy-foreground/65">{item.scope}</p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ) : null}
+        <ServiceRealizations titleOf={service.titleOf} items={related} />
 
-            <section className="mt-16 flex flex-col gap-12 lg:mt-20">
+        <div className="bg-navy">
+          <div className="mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8 lg:py-24">
+            <section className="flex flex-col gap-12">
               <div className="flex flex-col">
                 <DarkEyebrow icon={CircleHelp}>FAQ</DarkEyebrow>
                 <h2 className="mt-5 font-display text-2xl font-black text-navy-foreground sm:text-3xl">

@@ -1,6 +1,6 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, X } from "lucide-react";
+import { ArrowLeft, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { scrollToSection } from "@/lib/scroll-to-section";
@@ -118,59 +118,74 @@ export function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
             </a>
           )}
 
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={navHref(item.href)}
-                onClick={onNav(item.href)}
-                className="text-sm font-medium text-navy-foreground/80 transition-colors duration-300 hover:text-accent"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          {alwaysSolid ? null : (
+            <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+              {NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={navHref(item.href)}
+                  onClick={onNav(item.href)}
+                  className="text-sm font-medium text-navy-foreground/80 transition-colors duration-300 hover:text-accent"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          )}
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <a
-              href={PHONE_HREF}
-              className="flex items-center gap-2 text-sm font-semibold text-navy-foreground transition-colors duration-300 hover:text-accent"
+          {alwaysSolid ? (
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-foreground transition-colors duration-300 hover:text-accent"
             >
-              <Phone className="size-4 text-accent" />
-              {PHONE_DISPLAY}
-            </a>
-            <Button asChild variant="cyan" size="pill">
-              <a href={navHref("#kontakt")} onClick={onNav("#kontakt")}>
-                Darmowa wycena
+              <ArrowLeft className="size-4" />
+              Strona główna
+            </Link>
+          ) : (
+            <div className="hidden items-center gap-4 lg:flex">
+              <a
+                href={PHONE_HREF}
+                className="flex items-center gap-2 text-sm font-semibold text-navy-foreground transition-colors duration-300 hover:text-accent"
+              >
+                <Phone className="size-4 text-accent" />
+                {PHONE_DISPLAY}
               </a>
-            </Button>
-          </div>
+              <Button asChild variant="cyan" size="pill">
+                <a href={navHref("#kontakt")} onClick={onNav("#kontakt")}>
+                  Darmowa wycena
+                </a>
+              </Button>
+            </div>
+          )}
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="relative inline-flex size-10 items-center justify-center rounded-full text-navy-foreground transition-colors hover:bg-navy-foreground/10 lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "Zamknij menu" : "Otwórz menu"}
-          >
-            <Menu
-              className={cn(
-                "size-5 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                open ? "rotate-90 scale-75 opacity-0" : "rotate-0 scale-100 opacity-100",
-              )}
-              aria-hidden
-            />
-            <X
-              className={cn(
-                "absolute size-5 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-75 opacity-0",
-              )}
-              aria-hidden
-            />
-          </button>
+          {alwaysSolid ? null : (
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="relative inline-flex size-10 items-center justify-center rounded-full text-navy-foreground transition-colors hover:bg-navy-foreground/10 lg:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? "Zamknij menu" : "Otwórz menu"}
+            >
+              <Menu
+                className={cn(
+                  "size-5 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  open ? "rotate-90 scale-75 opacity-0" : "rotate-0 scale-100 opacity-100",
+                )}
+                aria-hidden
+              />
+              <X
+                className={cn(
+                  "absolute size-5 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-75 opacity-0",
+                )}
+                aria-hidden
+              />
+            </button>
+          )}
         </div>
 
+        {alwaysSolid ? null : (
         <div
           id="mobile-nav"
           className={cn(
@@ -207,6 +222,7 @@ export function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
             </div>
           </div>
         </div>
+        )}
       </header>
     </>
   );

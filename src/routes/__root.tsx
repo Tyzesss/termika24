@@ -11,6 +11,7 @@ import { type ReactNode } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
 import { VercelAnalytics } from "@/components/VercelAnalytics";
+import { PageTransition } from "@/components/PageTransition";
 import { COMPANY_LEGAL_NAME, SITE_NAME, SITE_TITLE } from "@/lib/site";
 
 import appCss from "../styles.css?url";
@@ -130,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pl" className="scroll-smooth" style={{ colorScheme: "dark" }}>
+    <html lang="pl" style={{ colorScheme: "dark" }}>
       <head>
         <HeadContent />
       </head>
@@ -148,7 +149,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
       <Toaster position="top-center" />
       <VercelAnalytics />
     </QueryClientProvider>
