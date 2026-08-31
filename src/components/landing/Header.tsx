@@ -92,6 +92,10 @@ export function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
       >
         <div
           aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[env(safe-area-inset-top,0px)] bg-navy"
+        />
+        <div
+          aria-hidden
           className={cn(
             "pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[opacity,height] duration-500 ease-out",
             open ? "opacity-0" : "opacity-100",

@@ -3,6 +3,8 @@ import { REALIZATIONS } from "./site";
 export type Service = {
   slug: string;
   title: string;
+  /** Dopełniacz: "Nasze realizacje {titleOf}" */
+  titleOf: string;
   short: string;
   intro: string;
   sections: { heading: string; body: string }[];
@@ -34,6 +36,7 @@ export const SERVICES: Service[] = [
   {
     slug: "kotlownie",
     title: "Kotłownie",
+    titleOf: "kotłowni",
     short: "Nowe kotłownie gazowe, olejowe i na paliwo stałe. Przebudowy i automatyka.",
     intro:
       "Stawiamy kotłownie od zera i przebudowujemy te, które już stoją. Domy, szkoły, szpitale, obiekty firmowe. Kocioł dobieramy do budynku, potem automatyka i rozruch.",
@@ -68,6 +71,7 @@ export const SERVICES: Service[] = [
   {
     slug: "centralne-ogrzewanie",
     title: "Centralne ogrzewanie",
+    titleOf: "centralnego ogrzewania",
     short: "Nowe c.o. i wymiany. Trójnik albo rozdzielacz, grzejniki i rury pod budynek.",
     intro:
       "Nowe instalacje c.o. i wymiany w budynkach, które już stoją. Układ, rury i grzejniki tak, żeby ciepło szło równo i dało się to potem serwisować.",
@@ -102,6 +106,7 @@ export const SERVICES: Service[] = [
   {
     slug: "pompy-ciepla",
     title: "Pompy ciepła",
+    titleOf: "pomp ciepła",
     short: "Powietrze, grunt albo woda. Ogrzewanie budynku i ciepła woda.",
     intro:
       "Montujemy pompy ciepła do ogrzewania i ciepłej wody. Najczęściej powietrze-woda. Grunt albo woda, gdy działka i budynek na to pozwalają.",
@@ -136,6 +141,7 @@ export const SERVICES: Service[] = [
   {
     slug: "ogrzewanie-podlogowe",
     title: "Ogrzewanie podłogowe",
+    titleOf: "ogrzewania podłogowego",
     short: "Podłoga i ściana. Mokra wylewka albo sucha zabudowa.",
     intro:
       "Podłogówka i ogrzewanie ścienne, zwykle w nowym budownictwie. Równe ciepło, bez baterii grzejników na ścianach. Albo jako drugi obieg przy zwykłym c.o.",
@@ -170,6 +176,7 @@ export const SERVICES: Service[] = [
   {
     slug: "instalacje-wod-kan",
     title: "Instalacje wod-kan",
+    titleOf: "instalacji wod-kan",
     short: "Woda, kanalizacja, przyłącza. Deszczówka, biały montaż, zmiękczacz.",
     intro:
       "Ciepła i zimna woda, kanalizacja, przyłącza. W środku i na zewnątrz. Domy i obiekty publiczne.",
@@ -212,6 +219,7 @@ export const SERVICES: Service[] = [
   {
     slug: "instalacje-gazowe",
     title: "Instalacje gazowe",
+    titleOf: "instalacji gazowych",
     short: "Rury spawane i zaciskowe. Szafka gazomierza, zawór odcinający, detektor.",
     intro:
       "Instalacje gazowe wewnętrzne i przebudowy podejść. Często w jednym zakresie z kotłownią gazową i wymianą kotła.",
@@ -246,6 +254,7 @@ export const SERVICES: Service[] = [
   {
     slug: "instalacje-solarne",
     title: "Instalacje solarne",
+    titleOf: "instalacji solarnych",
     short: "Kolektory płaskie i próżniowe. Wsparcie c.w.u. i c.o., nie zamiast kotła.",
     intro:
       "Kolektory płaskie albo próżniowe. To dodatek do kotła: mniej gazu albo oleju przy podgrzewie wody, zimą trochę wsparcia c.o.",
@@ -280,6 +289,7 @@ export const SERVICES: Service[] = [
   {
     slug: "instalacje-ppoz",
     title: "Instalacje p.poż.",
+    titleOf: "instalacji p.poż.",
     short: "Hydranty w środku i na zewnątrz. Tryskacze według projektu obiektu.",
     intro:
       "Hydranty i tryskacze. Zakres z projektu i z wymagań obiektu.",
@@ -314,6 +324,7 @@ export const SERVICES: Service[] = [
   {
     slug: "wentylacja-klimatyzacja",
     title: "Wentylacja i klimatyzacja",
+    titleOf: "wentylacji i klimatyzacji",
     short: "Wentylacja, klima, ciepło technologiczne i chłodnictwo.",
     intro:
       "Wentylacja, klimatyzacja, ciepło technologiczne i chłodnictwo. Ta sama ekipa, która stawia kotłownię i wod-kan, nie osobny podwykonawca na kanały.",

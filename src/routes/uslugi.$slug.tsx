@@ -248,7 +248,7 @@ function ServicePage() {
             {related.length > 0 ? (
               <section className="mt-16 lg:mt-20">
                 <h2 className="font-display text-2xl font-black text-navy-foreground sm:text-3xl">
-                  Wybrane <span className="text-gradient-cyan">realizacje</span>
+                  Nasze realizacje <span className="text-gradient-cyan">{service.titleOf}</span>
                 </h2>
                 <ul className="mt-8 grid gap-5 sm:grid-cols-2">
                   {related.map((item) => (
@@ -296,8 +296,8 @@ function ServicePage() {
                       Napisz albo zadzwoń. Pierwsza wizyta i wycena nic nie kosztują.
                     </p>
                   </div>
-                  <div className="mt-8 flex flex-col gap-3">
-                    <Button asChild variant="hero" size="xl">
+                  <div className="mt-8 flex w-full flex-col gap-5">
+                    <Button asChild variant="hero" size="xl" className="w-full hover:scale-100">
                       <Link to="/" hash="kontakt">
                         Formularz kontaktowy <ArrowRight className="size-4" />
                       </Link>
@@ -306,7 +306,7 @@ function ServicePage() {
                       asChild
                       variant="hero"
                       size="xl"
-                      className="border-white/25 bg-navy/25 hover:bg-navy/40"
+                      className="w-full border-white/25 bg-navy/25 hover:scale-100 hover:bg-navy/40"
                     >
                       <a href={PHONE_HREF}>
                         <Phone className="size-4" /> {PHONE_DISPLAY}

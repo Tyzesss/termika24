@@ -80,7 +80,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "viewport",
         content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
-      { name: "theme-color", content: "#080808" },
+      { name: "theme-color", content: "#1c1c1c" },
+      {
+        name: "theme-color",
+        content: "#1c1c1c",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        name: "theme-color",
+        content: "#1c1c1c",
+        media: "(prefers-color-scheme: dark)",
+      },
       { name: "color-scheme", content: "dark" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { title: SITE_NAME },
@@ -126,8 +136,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <div className="safari-toolbar-tint safari-toolbar-tint-top" aria-hidden />
-        <div className="safari-toolbar-tint safari-toolbar-tint-bottom" aria-hidden />
         <Scripts />
       </body>
     </html>

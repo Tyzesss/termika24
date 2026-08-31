@@ -104,8 +104,8 @@ export function Hero() {
                 key={stat.label}
                 className={
                   i >= 2
-                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
-                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
                 }
               >
                 <div className="font-display text-4xl font-black leading-none text-accent lg:text-[2.75rem]">

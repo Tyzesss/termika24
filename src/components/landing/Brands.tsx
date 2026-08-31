@@ -14,12 +14,14 @@ export function Brands() {
         backgroundImage: `linear-gradient(
           to bottom,
           transparent 0%,
-          transparent 46%,
-          oklch(from var(--navy) l c h / 0.1) 56%,
-          oklch(from var(--navy) l c h / 0.28) 66%,
-          oklch(from var(--navy) l c h / 0.55) 76%,
-          oklch(from var(--navy) l c h / 0.82) 86%,
-          var(--navy) 94%,
+          oklch(from var(--navy) l c h / 0.04) 12%,
+          oklch(from var(--navy) l c h / 0.12) 24%,
+          oklch(from var(--navy) l c h / 0.24) 36%,
+          oklch(from var(--navy) l c h / 0.4) 48%,
+          oklch(from var(--navy) l c h / 0.58) 58%,
+          oklch(from var(--navy) l c h / 0.74) 68%,
+          oklch(from var(--navy) l c h / 0.88) 78%,
+          var(--navy) 88%,
           var(--navy) 100%
         )`,
       }}
