@@ -93,9 +93,15 @@ export function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-0 -z-10 transition-opacity duration-500 ease-out",
-            solid ? "border-b border-navy-foreground/10 opacity-100 shadow-lift" : "opacity-0",
+            "pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[opacity,height] duration-500 ease-out",
+            open ? "opacity-0" : "opacity-100",
+            solid ? "h-28" : "h-40 sm:h-44",
           )}
+          style={{
+            backgroundImage: solid
+              ? "linear-gradient(to bottom, oklch(0 0 0 / 0.2) 0%, oklch(0 0 0 / 0.08) 58%, transparent 100%)"
+              : "linear-gradient(to bottom, oklch(0 0 0 / 0.38) 0%, oklch(0 0 0 / 0.16) 42%, oklch(0 0 0 / 0.05) 72%, transparent 100%)",
+          }}
         />
         <div className="relative mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-5 py-4 lg:px-8">
           {alwaysSolid ? (

@@ -1,4 +1,5 @@
 import { BadgeCheck } from "lucide-react";
+import { DarkEyebrow } from "./DarkEyebrow";
 import { Reveal } from "./Reveal";
 
 const BRANDS = ["Vaillant", "Viessmann", "De Dietrich", "Daikin", "Uponor", "Geberit"];
@@ -28,9 +29,7 @@ export function Brands() {
       <div className="relative pb-10 sm:pb-12">
         <div className="mx-auto flex max-w-6xl justify-center px-5 lg:px-8">
           <Reveal>
-            <span className="glass-panel glass-panel-clear inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-navy-foreground uppercase">
-              <BadgeCheck className="size-3.5 text-accent" /> Sprawdzone systemy
-            </span>
+            <DarkEyebrow icon={BadgeCheck}>Sprawdzone systemy</DarkEyebrow>
           </Reveal>
         </div>
 

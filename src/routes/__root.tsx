@@ -80,17 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "viewport",
         content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
-      { name: "theme-color", content: "#ffffff" },
-      {
-        name: "theme-color",
-        content: "#ffffff",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        name: "theme-color",
-        content: "#080808",
-        media: "(prefers-color-scheme: dark)",
-      },
+      { name: "theme-color", content: "#080808" },
+      { name: "color-scheme", content: "dark" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { title: SITE_NAME },
       {
         name: "description",
@@ -128,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pl" className="scroll-smooth">
+    <html lang="pl" className="scroll-smooth" style={{ colorScheme: "dark" }}>
       <head>
         <HeadContent />
       </head>

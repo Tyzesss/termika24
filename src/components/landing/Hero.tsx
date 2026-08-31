@@ -6,7 +6,8 @@ import { scrollToSection } from "@/lib/scroll-to-section";
 import { PHONE_HREF } from "@/lib/site";
 import { Counter } from "./Counter";
 import { Brands } from "./Brands";
-import heroImage from "@/assets/hero-kotlownia.png";
+import { DarkEyebrow } from "./DarkEyebrow";
+import heroImage from "@/assets/hero-kotlownia-bright.png";
 
 const STATS = [
   { value: 20, suffix: "", label: "Lat doświadczenia" },
@@ -34,7 +35,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: reduce ? 0 : 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="size-full origin-center scale-[1.04] object-cover object-[58%_42%]"
+          className="size-full origin-center scale-[1.04] object-cover object-[50%_40%] brightness-[0.64]"
         />
       </div>
       <div
@@ -56,10 +57,7 @@ export function Hero() {
             transition={{ duration: reduce ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto flex w-full max-w-4xl flex-col items-center text-center"
           >
-            <span className="glass-panel glass-panel-clear inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-navy-foreground uppercase">
-              <ShieldCheck className="size-3.5 text-accent" />
-              Certyfikowany instalator
-            </span>
+            <DarkEyebrow icon={ShieldCheck}>Certyfikowany instalator</DarkEyebrow>
 
             <h1 className="mt-5 font-display text-[clamp(2.4rem,7.2vw+0.5rem,3.5rem)] leading-[1.05] font-black tracking-tight text-navy-foreground sm:mt-6 sm:text-6xl sm:tracking-normal lg:text-7xl [filter:drop-shadow(0_4px_12px_oklch(0_0_0_/_0.28))_drop-shadow(0_12px_32px_oklch(0_0_0_/_0.32))_drop-shadow(0_24px_48px_oklch(0_0_0_/_0.22))]">
               Od kotłowni
@@ -106,18 +104,18 @@ export function Hero() {
                 key={stat.label}
                 className={
                   i >= 2
-                    ? "glass-panel glass-panel-clear hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
-                    : "glass-panel glass-panel-clear flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:before:hidden md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    ? "glass-panel hidden flex-col items-center justify-center text-center md:flex md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+                    : "glass-panel flex flex-col items-center justify-center text-center max-md:border-transparent max-md:bg-transparent max-md:p-0 max-md:shadow-none max-md:[backdrop-filter:none] max-md:[-webkit-backdrop-filter:none] md:rounded-2xl md:px-5 md:py-6 md:transition-transform md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
                 }
               >
-                <div className="font-display text-3xl font-black leading-none text-accent sm:text-4xl lg:text-[2.75rem]">
+                <div className="font-display text-4xl font-black leading-none text-accent lg:text-[2.75rem]">
                   {stat.static ? stat.value : <Counter to={stat.value} />}
                   <span>{stat.suffix}</span>
                 </div>
-                <p className="mt-1.5 text-[11px] leading-snug font-medium tracking-wide text-navy-foreground/70 uppercase sm:mt-2 sm:text-xs">
+                <p className="mt-2 text-[13px] leading-snug font-medium tracking-wide text-navy-foreground/70 uppercase sm:mt-2 sm:text-xs">
                   {stat.label}
                 </p>
-                <span className="mt-2.5 h-0.5 w-7 rounded-full bg-accent/75 sm:mt-3 sm:w-7" aria-hidden />
+                <span className="mt-2.5 h-0.5 w-8 rounded-full bg-accent/75 sm:mt-3 sm:w-7" aria-hidden />
               </div>
             ))}
           </motion.div>
